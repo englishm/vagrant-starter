@@ -150,6 +150,9 @@ GEM
       log4r (~> 1.1.9)
       net-scp (~> 1.0.4)
       net-ssh (~> 2.2.2)
+    vagrant-vbguest (0.1.1)
+      vagrant (~> 0.9.0)
+      virtualbox (~> 0.9.1)
     veewee (0.2.3)
       cucumber (>= 1.0.0)
       highline (~> 1.6.1)
@@ -175,4 +178,5 @@ DEPENDENCIES
   sqlite3
   uglifier (>= 1.0.3)
   vagrant (~> 0.9.7)
+  vagrant-vbguest (~> 0.1.1)
   veewee (~> 0.2.3)
