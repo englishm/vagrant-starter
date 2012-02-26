@@ -17,3 +17,4 @@
 # Ignore the big binary files for our VM.
 /iso
 *.box
+.vagrant
