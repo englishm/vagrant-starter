@@ -28,11 +28,20 @@ class rvm-ruby {
     command => "/usr/local/rvm/bin/rvm install ruby-1.9.3-p125",
     creates => "/usr/local/rvm/rubies/ruby-1.9.3-p125",
   }
-  #exec{"create-gemset":
-  #  command => "/usr/local/rvm/bin/rvm gemset create 1.9.3@demo",
-  #  creates => "/usr/local/rvm/gems/ruby-1.9.3-p125@demo",
-  #}
-  Exec["install-rvm"] -> Exec["install-ruby"] # -> Exec["create-gemset"]
+  exec{"set-default-ruby":
+    command => "/usr/local/rvm/bin/rvm use 1.9.3-p125 --default",
+    creates => "/usr/local/rvm/rubies/default",
+  }
+  exec{"create-gemset":
+    command => "/usr/local/rvm/bin/rvm gemset create demo",
+    creates => "/usr/local/rvm/gems/ruby-1.9.3-p125@demo",
+  }
+  exec{"install-bundler":
+    command => "/usr/local/rvm/bin/rvm gem install bundler",
+    creates => "/usr/local/rvm/gems/ruby-1.9.3-p125/gems/bundler-1.0.22/",
+  }
+  Exec["install-rvm"] -> Exec["install-ruby"] -> Exec["set-default-ruby"]
+  Exec["set-default-ruby"] -> Exec["create-gemset"] -> Exec["install-bundler"]
 }
 
 # Chaining - make sure things go in a reasonable order
