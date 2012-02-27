@@ -1,3 +1,6 @@
+$:.unshift(File.expand_path('./lib', ENV['rvm_path'])) # Add RVM's lib directory to the load path.
+require "rvm/capistrano"
+set :rvm_ruby_string, '1.9.3-p125@demo'
 require "bundler/capistrano"
 set :application, "demo-app"
 set :repository, "git@gitorious.atomicobject.com:english/vagrant-rails.git" 
