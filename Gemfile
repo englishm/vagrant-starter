@@ -6,6 +6,9 @@ gem "vagrant-vbguest", "~> 0.1.1"
 
 gem 'rails', '3.2.1'
 
+# We need a javascript engine for pre-compiling assets with execjs
+gem "therubyracer", :require => 'v8'
+
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
