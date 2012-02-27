@@ -44,9 +44,16 @@ class rvm-ruby {
   Exec["set-default-ruby"] -> Exec["create-gemset"] -> Exec["install-bundler"]
 }
 
+class rvm-users {
+  user{"vagrant":
+    ensure => present,
+    groups => "rvm",
+  }
+}
 # Chaining - make sure things go in a reasonable order
 Class['base-packages'] -> Class['rvm-ruby']
 
 include base-packages
 #include niceties # Non-essentials
 include rvm-ruby
+include rvm-users
