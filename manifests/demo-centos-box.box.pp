@@ -29,7 +29,7 @@ class rvm-ruby {
     creates => "/usr/local/rvm/rubies/ruby-1.9.3-p125",
   }
   exec{"set-default-ruby":
-    command => "/usr/local/rvm/bin/rvm use 1.9.3-p125 --default",
+    command => "/usr/local/rvm/bin/rvm alias create default ruby-1.9.3-p125",
     creates => "/usr/local/rvm/rubies/default",
   }
   exec{"create-gemset":
