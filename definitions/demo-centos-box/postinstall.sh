@@ -31,7 +31,7 @@ mkdir /home/vagrant/.ssh
 chmod 700 /home/vagrant/.ssh
 cd /home/vagrant/.ssh
 curl -L -o authorized_keys https://raw.github.com/mitchellh/vagrant/master/keys/vagrant.pub
-cat < /home/vagrant/.ssh/config << EOM
+cat > /home/vagrant/.ssh/config << EOM
 Host *
     StrictHostKeyChecking no
 EOM
